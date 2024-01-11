@@ -24,6 +24,7 @@ import java.util.Collection;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 public class SortFrame extends JFrame {
 
@@ -61,6 +62,7 @@ public class SortFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelSouth = new JPanel();
+		panelSouth.setBackground(new Color(255, 182, 193));
 		contentPane.add(panelSouth, BorderLayout.SOUTH);
 		
 		JButton btnAddRectangle = new JButton("Add rectangle");
