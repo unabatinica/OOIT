@@ -9,6 +9,10 @@ import javax.swing.JPanel;
 
 public class PnlDrawing extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Shape> shapes;
 	
 	public PnlDrawing() {

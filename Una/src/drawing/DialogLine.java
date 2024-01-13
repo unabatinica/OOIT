@@ -18,9 +18,16 @@ import java.awt.Insets;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.Font;
 
 public class DialogLine extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textXStartPoint;
 	private JTextField textYStartPoint;
@@ -46,6 +53,7 @@ public class DialogLine extends JDialog {
 		setModal(true);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(250, 250, 210));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();
@@ -55,7 +63,9 @@ public class DialogLine extends JDialog {
 		gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPanel.setLayout(gbl_contentPanel);
 		{
-			JLabel lblXStartPoint = new JLabel("x coordinate start point");
+			JLabel lblXStartPoint = new JLabel("x coordinate start point : ");
+			lblXStartPoint.setFont(new Font("Century Gothic", Font.BOLD, 12));
+			lblXStartPoint.setForeground(new Color(85, 107, 47));
 			GridBagConstraints gbc_lblXStartPoint = new GridBagConstraints();
 			gbc_lblXStartPoint.anchor = GridBagConstraints.WEST;
 			gbc_lblXStartPoint.insets = new Insets(0, 0, 5, 5);
@@ -65,6 +75,13 @@ public class DialogLine extends JDialog {
 		}
 		{
 			textXStartPoint = new JTextField();
+			textXStartPoint.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textXStartPoint.getText().length() >= 4 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textXStartPoint = new GridBagConstraints();
 			gbc_textXStartPoint.anchor = GridBagConstraints.WEST;
 			gbc_textXStartPoint.insets = new Insets(0, 0, 5, 0);
@@ -74,7 +91,9 @@ public class DialogLine extends JDialog {
 			textXStartPoint.setColumns(10);
 		}
 		{
-			JLabel lblYStartPoint = new JLabel("y coordinate start point ");
+			JLabel lblYStartPoint = new JLabel("y coordinate start point :  ");
+			lblYStartPoint.setFont(new Font("Century Gothic", Font.BOLD, 12));
+			lblYStartPoint.setForeground(new Color(85, 107, 47));
 			GridBagConstraints gbc_lblYStartPoint = new GridBagConstraints();
 			gbc_lblYStartPoint.anchor = GridBagConstraints.WEST;
 			gbc_lblYStartPoint.insets = new Insets(0, 0, 5, 5);
@@ -84,6 +103,13 @@ public class DialogLine extends JDialog {
 		}
 		{
 			textYStartPoint = new JTextField();
+			textYStartPoint.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textYStartPoint.getText().length() >= 3 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textYStartPoint = new GridBagConstraints();
 			gbc_textYStartPoint.anchor = GridBagConstraints.NORTHWEST;
 			gbc_textYStartPoint.insets = new Insets(0, 0, 5, 0);
@@ -93,7 +119,9 @@ public class DialogLine extends JDialog {
 			textYStartPoint.setColumns(10);
 		}
 		{
-			JLabel lblXEndPoint = new JLabel("x coordinate end point");
+			JLabel lblXEndPoint = new JLabel("x coordinate end point : ");
+			lblXEndPoint.setForeground(new Color(85, 107, 47));
+			lblXEndPoint.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			GridBagConstraints gbc_lblXEndPoint = new GridBagConstraints();
 			gbc_lblXEndPoint.anchor = GridBagConstraints.WEST;
 			gbc_lblXEndPoint.insets = new Insets(0, 0, 5, 5);
@@ -103,6 +131,13 @@ public class DialogLine extends JDialog {
 		}
 		{
 			textXEndPoint = new JTextField();
+			textXEndPoint.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textXEndPoint.getText().length() >= 4 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textXEndPoint = new GridBagConstraints();
 			gbc_textXEndPoint.anchor = GridBagConstraints.WEST;
 			gbc_textXEndPoint.insets = new Insets(0, 0, 5, 0);
@@ -112,7 +147,9 @@ public class DialogLine extends JDialog {
 			textXEndPoint.setColumns(10);
 		}
 		{
-			JLabel lblYEndPoint = new JLabel("y coordinate end point");
+			JLabel lblYEndPoint = new JLabel("y coordinate end point : \r\n");
+			lblYEndPoint.setFont(new Font("Century Gothic", Font.BOLD, 12));
+			lblYEndPoint.setForeground(new Color(85, 107, 47));
 			GridBagConstraints gbc_lblYEndPoint = new GridBagConstraints();
 			gbc_lblYEndPoint.anchor = GridBagConstraints.WEST;
 			gbc_lblYEndPoint.insets = new Insets(0, 0, 5, 5);
@@ -122,6 +159,13 @@ public class DialogLine extends JDialog {
 		}
 		{
 			textYEndPoint = new JTextField();
+			textYEndPoint.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textYEndPoint.getText().length() >= 3 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textYEndPoint = new GridBagConstraints();
 			gbc_textYEndPoint.insets = new Insets(0, 0, 5, 0);
 			gbc_textYEndPoint.anchor = GridBagConstraints.NORTHWEST;
@@ -131,7 +175,9 @@ public class DialogLine extends JDialog {
 			textYEndPoint.setColumns(10);
 		}
 		{
-			JLabel lblOuterColor = new JLabel("Outer color");
+			JLabel lblOuterColor = new JLabel("Line color");
+			lblOuterColor.setForeground(new Color(85, 107, 47));
+			lblOuterColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			GridBagConstraints gbc_lblOuterColor = new GridBagConstraints();
 			gbc_lblOuterColor.anchor = GridBagConstraints.EAST;
 			gbc_lblOuterColor.insets = new Insets(0, 0, 0, 5);
@@ -140,10 +186,11 @@ public class DialogLine extends JDialog {
 			contentPanel.add(lblOuterColor, gbc_lblOuterColor);
 		}
 		{
-			btnOuterColor = new JButton("Outer color");
+			btnOuterColor = new JButton("Line color");
+			btnOuterColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			btnOuterColor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Color outerColor = JColorChooser.showDialog(btnOuterColor, "Choose your outer color", btnOuterColor.getBackground());
+					Color outerColor = JColorChooser.showDialog(btnOuterColor, "Choose your line color", btnOuterColor.getBackground());
 					if (outerColor != null) {
 						btnOuterColor.setBackground(outerColor);
 					}
@@ -157,10 +204,14 @@ public class DialogLine extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBackground(new Color(85, 107, 47));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.setForeground(new Color(85, 107, 47));
+				okButton.setFont(new Font("Century Gothic", Font.BOLD, 12));
+				okButton.setBackground(new Color(250, 250, 210));
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						try {
@@ -171,20 +222,20 @@ public class DialogLine extends JDialog {
 								
 								JOptionPane.showMessageDialog(okButton, "Please insert all fields");
 							}
-							else if (Integer.parseInt(textXStartPoint.getText()) <= 0 ||
-									Integer.parseInt(textXStartPoint.getText()) > 810 ||
-									Integer.parseInt(textXEndPoint.getText()) <= 0 ||
-									Integer.parseInt(textXEndPoint.getText()) > 810) {
+							else if (Integer.parseInt(textXStartPoint.getText()) < 0 ||
+									Integer.parseInt(textXStartPoint.getText()) > 1360 ||
+									Integer.parseInt(textXEndPoint.getText()) < 0 ||
+									Integer.parseInt(textXEndPoint.getText()) > 1360) {
 										
-									JOptionPane.showMessageDialog(okButton, "Please insert a value of the x-coordinate greater than 0 and less than 810");
+									JOptionPane.showMessageDialog(okButton, "Please insert a value of the x-coordinate 0 or greater than 0 and less than 1360");
 								
 							}
-							else if(Integer.parseInt(textYStartPoint.getText()) <= 0 ||
-									Integer.parseInt(textYStartPoint.getText()) > 650 ||
-									Integer.parseInt(textYEndPoint.getText()) <= 0 || 
-									Integer.parseInt(textYEndPoint.getText()) > 650) {
+							else if(Integer.parseInt(textYStartPoint.getText()) < 0 ||
+									Integer.parseInt(textYStartPoint.getText()) > 755 ||
+									Integer.parseInt(textYEndPoint.getText()) < 0 || 
+									Integer.parseInt(textYEndPoint.getText()) > 755) {
 								
-								JOptionPane.showMessageDialog(okButton, "Please insert a value of the y-coordinate greater than 0 and less than 650");
+								JOptionPane.showMessageDialog(okButton, "Please insert a value of the y-coordinate 0 or greater than 0 and less than 755");
 								
 							}
 							else {
@@ -203,6 +254,9 @@ public class DialogLine extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setBackground(new Color(250, 250, 210));
+				cancelButton.setFont(new Font("Century Gothic", Font.BOLD, 12));
+				cancelButton.setForeground(new Color(85, 107, 47));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						success = false;

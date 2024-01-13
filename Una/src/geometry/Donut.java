@@ -55,10 +55,8 @@ public class Donut extends Circle {
 		}
 		
 		public boolean equals(Object obj) {
-			//kada su centri isti, i innerRadius i radius
 			if(obj instanceof Donut) {
 				Donut donut = (Donut) obj;
-				//super.equals(obj) && this.innerRadius == donut.innerRadius
 				if(getCenter().equals(donut.getCenter()) && getRadius() == donut.getRadius() && this.innerRadius == donut.innerRadius) {
 					return true;
 				}else {
@@ -92,6 +90,7 @@ public class Donut extends Circle {
 				g.drawRect(this.getCenter().getX() - 3, this.getCenter().getY() - this.innerRadius - 3, 6, 6);
 			}
 		}
+		
 	
 		
 		public String toString() {

@@ -18,9 +18,16 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JColorChooser;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.Font;
 
 public class DialogPoint extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textX;
 	private JTextField textY;
@@ -43,6 +50,7 @@ public class DialogPoint extends JDialog {
 		setBounds(100, 100, 450, 300);
 		setModal(true);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(250, 250, 210));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();
@@ -52,7 +60,9 @@ public class DialogPoint extends JDialog {
 		gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPanel.setLayout(gbl_contentPanel);
 		{
-			JLabel lblX = new JLabel("x coordinate");
+			JLabel lblX = new JLabel("x coordinate : ");
+			lblX.setFont(new Font("Century Gothic", Font.BOLD, 12));
+			lblX.setForeground(new Color(85, 107, 47));
 			GridBagConstraints gbc_lblX = new GridBagConstraints();
 			gbc_lblX.anchor = GridBagConstraints.WEST;
 			gbc_lblX.insets = new Insets(0, 0, 5, 5);
@@ -62,6 +72,13 @@ public class DialogPoint extends JDialog {
 		}
 		{
 			textX = new JTextField();
+			textX.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textX.getText().length() >= 4 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textX = new GridBagConstraints();
 			gbc_textX.anchor = GridBagConstraints.WEST;
 			gbc_textX.insets = new Insets(0, 0, 5, 0);
@@ -71,7 +88,9 @@ public class DialogPoint extends JDialog {
 			textX.setColumns(10);
 		}
 		{
-			JLabel lblY = new JLabel("y coordinate");
+			JLabel lblY = new JLabel("y coordinate : ");
+			lblY.setForeground(new Color(85, 107, 47));
+			lblY.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			GridBagConstraints gbc_lblY = new GridBagConstraints();
 			gbc_lblY.anchor = GridBagConstraints.WEST;
 			gbc_lblY.insets = new Insets(0, 0, 5, 5);
@@ -81,6 +100,13 @@ public class DialogPoint extends JDialog {
 		}
 		{
 			textY = new JTextField();
+			textY.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textY.getText().length() >= 3 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textY = new GridBagConstraints();
 			gbc_textY.insets = new Insets(0, 0, 5, 0);
 			gbc_textY.anchor = GridBagConstraints.NORTHWEST;
@@ -90,7 +116,9 @@ public class DialogPoint extends JDialog {
 			textY.setColumns(10);
 		}
 		{
-			JLabel lblOuterColor = new JLabel("Outer color");
+			JLabel lblOuterColor = new JLabel("Color");
+			lblOuterColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
+			lblOuterColor.setForeground(new Color(85, 107, 47));
 			GridBagConstraints gbc_lblOuterColor = new GridBagConstraints();
 			gbc_lblOuterColor.insets = new Insets(0, 0, 0, 5);
 			gbc_lblOuterColor.gridx = 2;
@@ -98,10 +126,11 @@ public class DialogPoint extends JDialog {
 			contentPanel.add(lblOuterColor, gbc_lblOuterColor);
 		}
 		{
-			btnOuterColor = new JButton("Outer color");
+			btnOuterColor = new JButton("Color");
+			btnOuterColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			btnOuterColor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Color outerColor = JColorChooser.showDialog(btnOuterColor, "Choose your outer color", btnOuterColor.getBackground());
+					Color outerColor = JColorChooser.showDialog(btnOuterColor, "Choose your color", btnOuterColor.getBackground());
 					if (outerColor != null) {
 						btnOuterColor.setBackground(outerColor);
 					}
@@ -115,25 +144,29 @@ public class DialogPoint extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBackground(new Color(85, 107, 47));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.setForeground(new Color(85, 107, 47));
+				okButton.setFont(new Font("Century Gothic", Font.BOLD, 12));
+				okButton.setBackground(new Color(250, 250, 210));
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						try {
 							if (textX.getText().isEmpty() || textY.getText().isEmpty()) {
 								JOptionPane.showMessageDialog(okButton, "Please insert all fields");
 							}
-							else if (Integer.parseInt(textX.getText()) <= 0 ||
-									 Integer.parseInt(textX.getText()) > 810) {
+							else if (Integer.parseInt(textX.getText()) < 0 ||
+									 Integer.parseInt(textX.getText()) > 1360) {
 										
-									JOptionPane.showMessageDialog(okButton, "Please insert a value of the x-coordinate greater than 0 and less than 810");	
+									JOptionPane.showMessageDialog(okButton, "Please insert a value of the x-coordinate 0 or greater than 0 and less than 1360");	
 							}
-							else if(Integer.parseInt(textY.getText()) <= 0 ||
-									Integer.parseInt(textY.getText()) > 650) {
+							else if(Integer.parseInt(textY.getText()) < 0 ||
+									Integer.parseInt(textY.getText()) > 755) {
 								
-									JOptionPane.showMessageDialog(okButton, "Please insert a value of the y-coordinate greater than 0 and less than 650");
+									JOptionPane.showMessageDialog(okButton, "Please insert a value of the y-coordinate 0 or greater than 0 and less than 755");
 							}
 							else {
 								success = true;
@@ -151,6 +184,9 @@ public class DialogPoint extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setFont(new Font("Century Gothic", Font.BOLD, 12));
+				cancelButton.setBackground(new Color(250, 250, 210));
+				cancelButton.setForeground(new Color(85, 107, 47));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						success = false;

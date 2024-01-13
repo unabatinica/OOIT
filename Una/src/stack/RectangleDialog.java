@@ -20,9 +20,17 @@ import geometry.Rectangle;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class RectangleDialog extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textXUpperLeftPoint;
 	private JTextField textYUpperLeftPoint;
@@ -50,10 +58,11 @@ public class RectangleDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public RectangleDialog() {
-		setTitle("Dialog Rectangle Stack");
+		setTitle("Add the rectangle values");
 		setModal(true);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(105, 105, 105));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();
@@ -63,7 +72,10 @@ public class RectangleDialog extends JDialog {
 		gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPanel.setLayout(gbl_contentPanel);
 		{
-			JLabel lblXUpperLeftPoint = new JLabel("x coordinate upper left point");
+			JLabel lblXUpperLeftPoint = new JLabel("x coordinate upper left point : ");
+			lblXUpperLeftPoint.setBackground(new Color(255, 240, 245));
+			lblXUpperLeftPoint.setForeground(new Color(255, 240, 245));
+			lblXUpperLeftPoint.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 			GridBagConstraints gbc_lblXUpperLeftPoint = new GridBagConstraints();
 			gbc_lblXUpperLeftPoint.insets = new Insets(0, 0, 5, 5);
 			gbc_lblXUpperLeftPoint.anchor = GridBagConstraints.EAST;
@@ -73,6 +85,13 @@ public class RectangleDialog extends JDialog {
 		}
 		{
 			textXUpperLeftPoint = new JTextField();
+			textXUpperLeftPoint.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textXUpperLeftPoint.getText().length() >= 9 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textXUpperLeftPoint = new GridBagConstraints();
 			gbc_textXUpperLeftPoint.anchor = GridBagConstraints.WEST;
 			gbc_textXUpperLeftPoint.insets = new Insets(0, 0, 5, 0);
@@ -82,7 +101,10 @@ public class RectangleDialog extends JDialog {
 			textXUpperLeftPoint.setColumns(10);
 		}
 		{
-			JLabel lblYUpperLeftPoint = new JLabel("y coordinate upper left point");
+			JLabel lblYUpperLeftPoint = new JLabel("y coordinate upper left point : ");
+			lblYUpperLeftPoint.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+			lblYUpperLeftPoint.setForeground(new Color(255, 240, 245));
+			lblYUpperLeftPoint.setBackground(new Color(255, 240, 245));
 			GridBagConstraints gbc_lblYUpperLeftPoint = new GridBagConstraints();
 			gbc_lblYUpperLeftPoint.anchor = GridBagConstraints.SOUTHEAST;
 			gbc_lblYUpperLeftPoint.insets = new Insets(0, 0, 5, 5);
@@ -92,6 +114,13 @@ public class RectangleDialog extends JDialog {
 		}
 		{
 			textYUpperLeftPoint = new JTextField();
+			textYUpperLeftPoint.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textYUpperLeftPoint.getText().length() >= 9 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textYUpperLeftPoint = new GridBagConstraints();
 			gbc_textYUpperLeftPoint.anchor = GridBagConstraints.WEST;
 			gbc_textYUpperLeftPoint.insets = new Insets(0, 0, 5, 0);
@@ -101,8 +130,11 @@ public class RectangleDialog extends JDialog {
 			textYUpperLeftPoint.setColumns(10);
 		}
 		{
-			JLabel lblWidth = new JLabel("Width");
+			JLabel lblWidth = new JLabel("Width : ");
+			lblWidth.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+			lblWidth.setForeground(new Color(255, 240, 245));
 			GridBagConstraints gbc_lblWidth = new GridBagConstraints();
+			gbc_lblWidth.anchor = GridBagConstraints.EAST;
 			gbc_lblWidth.insets = new Insets(0, 0, 5, 5);
 			gbc_lblWidth.gridx = 2;
 			gbc_lblWidth.gridy = 3;
@@ -110,6 +142,13 @@ public class RectangleDialog extends JDialog {
 		}
 		{
 			textWidth = new JTextField();
+			textWidth.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textWidth.getText().length() >= 9 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textWidth = new GridBagConstraints();
 			gbc_textWidth.anchor = GridBagConstraints.WEST;
 			gbc_textWidth.insets = new Insets(0, 0, 5, 0);
@@ -119,8 +158,11 @@ public class RectangleDialog extends JDialog {
 			textWidth.setColumns(10);
 		}
 		{
-			JLabel lblHeight = new JLabel("Height");
+			JLabel lblHeight = new JLabel("Height : ");
+			lblHeight.setForeground(new Color(255, 240, 245));
+			lblHeight.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 			GridBagConstraints gbc_lblHeight = new GridBagConstraints();
+			gbc_lblHeight.anchor = GridBagConstraints.EAST;
 			gbc_lblHeight.insets = new Insets(0, 0, 5, 5);
 			gbc_lblHeight.gridx = 2;
 			gbc_lblHeight.gridy = 4;
@@ -128,6 +170,13 @@ public class RectangleDialog extends JDialog {
 		}
 		{
 			textHeight = new JTextField();
+			textHeight.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textHeight.getText().length() >= 9 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textHeight = new GridBagConstraints();
 			gbc_textHeight.anchor = GridBagConstraints.WEST;
 			gbc_textHeight.insets = new Insets(0, 0, 5, 0);
@@ -140,10 +189,15 @@ public class RectangleDialog extends JDialog {
 		
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setForeground(new Color(0, 0, 0));
+			buttonPane.setBackground(new Color(255, 240, 245));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				okButton = new JButton("OK");
+				okButton.setForeground(new Color(255, 240, 245));
+				okButton.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+				okButton.setBackground(new Color(105, 105, 105));
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						try {
@@ -183,6 +237,9 @@ public class RectangleDialog extends JDialog {
 			}
 			{
 				cancelButton = new JButton("Cancel");
+				cancelButton.setForeground(new Color(255, 240, 245));
+				cancelButton.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+				cancelButton.setBackground(new Color(105, 105, 105));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						success = false;

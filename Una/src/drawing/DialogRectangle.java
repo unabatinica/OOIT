@@ -20,9 +20,16 @@ import javax.swing.JTextField;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.Font;
 
 public class DialogRectangle extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textXUpperLeftPoint;
 	private JTextField textYUpperLeftPoint;
@@ -50,6 +57,7 @@ public class DialogRectangle extends JDialog {
 		setModal(true);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(250, 250, 210));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();
@@ -59,7 +67,9 @@ public class DialogRectangle extends JDialog {
 		gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPanel.setLayout(gbl_contentPanel);
 		{
-			JLabel lblXUpperLeftPoint = new JLabel("x coordinate upper left point");
+			JLabel lblXUpperLeftPoint = new JLabel("x coordinate upper left point : ");
+			lblXUpperLeftPoint.setFont(new Font("Century Gothic", Font.BOLD, 12));
+			lblXUpperLeftPoint.setForeground(new Color(85, 107, 47));
 			GridBagConstraints gbc_lblXUpperLeftPoint = new GridBagConstraints();
 			gbc_lblXUpperLeftPoint.insets = new Insets(0, 0, 5, 5);
 			gbc_lblXUpperLeftPoint.anchor = GridBagConstraints.EAST;
@@ -69,6 +79,13 @@ public class DialogRectangle extends JDialog {
 		}
 		{
 			textXUpperLeftPoint = new JTextField();
+			textXUpperLeftPoint.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textXUpperLeftPoint.getText().length() >= 4 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textXUpperLeftPoint = new GridBagConstraints();
 			gbc_textXUpperLeftPoint.anchor = GridBagConstraints.WEST;
 			gbc_textXUpperLeftPoint.insets = new Insets(0, 0, 5, 0);
@@ -78,7 +95,9 @@ public class DialogRectangle extends JDialog {
 			textXUpperLeftPoint.setColumns(10);
 		}
 		{
-			JLabel lblYUpperLeftPoint = new JLabel("y coordinate upper left point");
+			JLabel lblYUpperLeftPoint = new JLabel("y coordinate upper left point : ");
+			lblYUpperLeftPoint.setForeground(new Color(85, 107, 47));
+			lblYUpperLeftPoint.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			GridBagConstraints gbc_lblYUpperLeftPoint = new GridBagConstraints();
 			gbc_lblYUpperLeftPoint.anchor = GridBagConstraints.SOUTHEAST;
 			gbc_lblYUpperLeftPoint.insets = new Insets(0, 0, 5, 5);
@@ -88,6 +107,13 @@ public class DialogRectangle extends JDialog {
 		}
 		{
 			textYUpperLeftPoint = new JTextField();
+			textYUpperLeftPoint.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textYUpperLeftPoint.getText().length() >= 3 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textYUpperLeftPoint = new GridBagConstraints();
 			gbc_textYUpperLeftPoint.anchor = GridBagConstraints.WEST;
 			gbc_textYUpperLeftPoint.insets = new Insets(0, 0, 5, 0);
@@ -97,8 +123,11 @@ public class DialogRectangle extends JDialog {
 			textYUpperLeftPoint.setColumns(10);
 		}
 		{
-			JLabel lblWidth = new JLabel("Width");
+			JLabel lblWidth = new JLabel("Width : ");
+			lblWidth.setForeground(new Color(85, 107, 47));
+			lblWidth.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			GridBagConstraints gbc_lblWidth = new GridBagConstraints();
+			gbc_lblWidth.anchor = GridBagConstraints.EAST;
 			gbc_lblWidth.insets = new Insets(0, 0, 5, 5);
 			gbc_lblWidth.gridx = 2;
 			gbc_lblWidth.gridy = 3;
@@ -106,6 +135,13 @@ public class DialogRectangle extends JDialog {
 		}
 		{
 			textWidth = new JTextField();
+			textWidth.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textWidth.getText().length() >= 4 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textWidth = new GridBagConstraints();
 			gbc_textWidth.anchor = GridBagConstraints.WEST;
 			gbc_textWidth.insets = new Insets(0, 0, 5, 0);
@@ -115,8 +151,11 @@ public class DialogRectangle extends JDialog {
 			textWidth.setColumns(10);
 		}
 		{
-			JLabel lblHeight = new JLabel("Height");
+			JLabel lblHeight = new JLabel("Height : ");
+			lblHeight.setForeground(new Color(85, 107, 47));
+			lblHeight.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			GridBagConstraints gbc_lblHeight = new GridBagConstraints();
+			gbc_lblHeight.anchor = GridBagConstraints.EAST;
 			gbc_lblHeight.insets = new Insets(0, 0, 5, 5);
 			gbc_lblHeight.gridx = 2;
 			gbc_lblHeight.gridy = 4;
@@ -124,6 +163,13 @@ public class DialogRectangle extends JDialog {
 		}
 		{
 			textHeight = new JTextField();
+			textHeight.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textHeight.getText().length() >= 3 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textHeight = new GridBagConstraints();
 			gbc_textHeight.anchor = GridBagConstraints.WEST;
 			gbc_textHeight.insets = new Insets(0, 0, 5, 0);
@@ -133,7 +179,9 @@ public class DialogRectangle extends JDialog {
 			textHeight.setColumns(10);
 		}
 		{
-			JLabel lblOuterColor = new JLabel("Outer color");
+			JLabel lblOuterColor = new JLabel("Line color");
+			lblOuterColor.setForeground(new Color(85, 107, 47));
+			lblOuterColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			GridBagConstraints gbc_lblOuterColor = new GridBagConstraints();
 			gbc_lblOuterColor.insets = new Insets(0, 0, 5, 5);
 			gbc_lblOuterColor.gridx = 2;
@@ -141,10 +189,11 @@ public class DialogRectangle extends JDialog {
 			contentPanel.add(lblOuterColor, gbc_lblOuterColor);
 		}
 		{
-			btnOuterColor = new JButton("Outer color");
+			btnOuterColor = new JButton("Line color");
+			btnOuterColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			btnOuterColor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Color outerColor = JColorChooser.showDialog(btnOuterColor, "Choose your outer color", btnOuterColor.getBackground());
+					Color outerColor = JColorChooser.showDialog(btnOuterColor, "Choose your line color", btnOuterColor.getBackground());
 					if (outerColor != null) {
 						btnOuterColor.setBackground(outerColor);
 					}
@@ -160,6 +209,8 @@ public class DialogRectangle extends JDialog {
 		}
 		{
 			JLabel lblInnerColor = new JLabel("Inner color");
+			lblInnerColor.setForeground(new Color(85, 107, 47));
+			lblInnerColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			GridBagConstraints gbc_lblInnerColor = new GridBagConstraints();
 			gbc_lblInnerColor.insets = new Insets(0, 0, 0, 5);
 			gbc_lblInnerColor.gridx = 2;
@@ -168,6 +219,7 @@ public class DialogRectangle extends JDialog {
 		}
 		{
 			btnInnerColor = new JButton("Inner color");
+			btnInnerColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			btnInnerColor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Color innerColor = JColorChooser.showDialog(btnInnerColor, "Choose your outer color", btnInnerColor.getBackground());
@@ -184,10 +236,14 @@ public class DialogRectangle extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBackground(new Color(85, 107, 47));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.setForeground(new Color(85, 107, 47));
+				okButton.setFont(new Font("Century Gothic", Font.BOLD, 12));
+				okButton.setBackground(new Color(250, 250, 210));
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						
@@ -200,24 +256,27 @@ public class DialogRectangle extends JDialog {
 								JOptionPane.showMessageDialog(okButton, "Please insert all fields");
 							}
 							else if (Integer.parseInt(textXUpperLeftPoint.getText()) < 0 ||
-									Integer.parseInt(textXUpperLeftPoint.getText()) > 810) {
+									Integer.parseInt(textXUpperLeftPoint.getText()) > 1360) {
 										
-								JOptionPane.showMessageDialog(okButton, "Please insert a value of the x-coordinate of the upper left point greater than 0 and less than 810");
+								JOptionPane.showMessageDialog(okButton, "Please insert a value of the x-coordinate of the upper left point 0 or greater than 0 and less than 1360");
 								
 							}
 							else if(Integer.parseInt(textYUpperLeftPoint.getText()) < 0 ||
-									Integer.parseInt(textYUpperLeftPoint.getText()) > 650) {
+									Integer.parseInt(textYUpperLeftPoint.getText()) > 755) {
 								
-								JOptionPane.showMessageDialog(okButton, "Please insert a value of the y-coordinate of the upper left point greater than 0 and less than 650");
+								JOptionPane.showMessageDialog(okButton, "Please insert a value of the y-coordinate of the upper left point 0 or greater than 0 and less than 755");
 								
 							}
 							else if(Integer.parseInt(textWidth.getText()) <= 0 ||
-									Integer.parseInt(textHeight.getText()) <= 0 ||
-									Integer.parseInt(textWidth.getText()) > 350 ||
-									Integer.parseInt(textHeight.getText()) >350) {
+									Integer.parseInt(textWidth.getText()) > 1200) {
 								
-								    JOptionPane.showMessageDialog(okButton, "Please insert width and height values greater than 0 and less than 350");
+								JOptionPane.showMessageDialog(okButton, "Please insert width value greater than 0 and less than 1200");
 								
+							}
+							else if(Integer.parseInt(textHeight.getText()) <= 0 ||
+									Integer.parseInt(textHeight.getText()) > 900) {
+								
+								JOptionPane.showMessageDialog(okButton, "Please insert height value greater than 0 and less than 900");
 							}
 							else {
 								success = true;
@@ -235,6 +294,9 @@ public class DialogRectangle extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setBackground(new Color(250, 250, 210));
+				cancelButton.setFont(new Font("Century Gothic", Font.BOLD, 12));
+				cancelButton.setForeground(new Color(85, 107, 47));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						success = false;

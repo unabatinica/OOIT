@@ -19,6 +19,10 @@ import javax.swing.border.EmptyBorder;
 
 import geometry.Point;
 import geometry.Rectangle;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.Color;
+import java.awt.Font;
 
 public class RectangleDialogSort extends JDialog {
 
@@ -53,10 +57,11 @@ public class RectangleDialogSort extends JDialog {
 	 * Create the dialog.
 	 */
 	public RectangleDialogSort() {
-		setTitle("Dialog Rectangle Sort");
+		setTitle("Add the rectangle values");
 		setModal(true);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(240, 255, 255));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();
@@ -66,7 +71,9 @@ public class RectangleDialogSort extends JDialog {
 		gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPanel.setLayout(gbl_contentPanel);
 		{
-			JLabel lblXUpperLeftPoint = new JLabel("x coordinate upper left point");
+			JLabel lblXUpperLeftPoint = new JLabel("x coordinate upper left point : ");
+			lblXUpperLeftPoint.setFont(new Font("Arial", Font.BOLD, 12));
+			lblXUpperLeftPoint.setForeground(new Color(47, 79, 79));
 			GridBagConstraints gbc_lblXUpperLeftPoint = new GridBagConstraints();
 			gbc_lblXUpperLeftPoint.insets = new Insets(0, 0, 5, 5);
 			gbc_lblXUpperLeftPoint.anchor = GridBagConstraints.EAST;
@@ -76,6 +83,13 @@ public class RectangleDialogSort extends JDialog {
 		}
 		{
 			textXUpperLeftPoint = new JTextField();
+			textXUpperLeftPoint.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textXUpperLeftPoint.getText().length() >= 4 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textXUpperLeftPoint = new GridBagConstraints();
 			gbc_textXUpperLeftPoint.anchor = GridBagConstraints.WEST;
 			gbc_textXUpperLeftPoint.insets = new Insets(0, 0, 5, 0);
@@ -85,7 +99,9 @@ public class RectangleDialogSort extends JDialog {
 			textXUpperLeftPoint.setColumns(10);
 		}
 		{
-			JLabel lblYUpperLeftPoint = new JLabel("y coordinate upper left point");
+			JLabel lblYUpperLeftPoint = new JLabel("y coordinate upper left point : ");
+			lblYUpperLeftPoint.setForeground(new Color(47, 79, 79));
+			lblYUpperLeftPoint.setFont(new Font("Arial", Font.BOLD, 12));
 			GridBagConstraints gbc_lblYUpperLeftPoint = new GridBagConstraints();
 			gbc_lblYUpperLeftPoint.anchor = GridBagConstraints.SOUTHEAST;
 			gbc_lblYUpperLeftPoint.insets = new Insets(0, 0, 5, 5);
@@ -95,6 +111,13 @@ public class RectangleDialogSort extends JDialog {
 		}
 		{
 			textYUpperLeftPoint = new JTextField();
+			textYUpperLeftPoint.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textYUpperLeftPoint.getText().length() >= 4 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textYUpperLeftPoint = new GridBagConstraints();
 			gbc_textYUpperLeftPoint.anchor = GridBagConstraints.WEST;
 			gbc_textYUpperLeftPoint.insets = new Insets(0, 0, 5, 0);
@@ -104,8 +127,11 @@ public class RectangleDialogSort extends JDialog {
 			textYUpperLeftPoint.setColumns(10);
 		}
 		{
-			JLabel lblWidth = new JLabel("Width");
+			JLabel lblWidth = new JLabel("Width : \r\n");
+			lblWidth.setForeground(new Color(47, 79, 79));
+			lblWidth.setFont(new Font("Arial", Font.BOLD, 12));
 			GridBagConstraints gbc_lblWidth = new GridBagConstraints();
+			gbc_lblWidth.anchor = GridBagConstraints.EAST;
 			gbc_lblWidth.insets = new Insets(0, 0, 5, 5);
 			gbc_lblWidth.gridx = 2;
 			gbc_lblWidth.gridy = 3;
@@ -113,6 +139,13 @@ public class RectangleDialogSort extends JDialog {
 		}
 		{
 			textWidth = new JTextField();
+			textWidth.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textWidth.getText().length() >= 4 ) 
+			            e.consume(); 
+				}
+			});
 			GridBagConstraints gbc_textWidth = new GridBagConstraints();
 			gbc_textWidth.anchor = GridBagConstraints.WEST;
 			gbc_textWidth.insets = new Insets(0, 0, 5, 0);
@@ -122,8 +155,11 @@ public class RectangleDialogSort extends JDialog {
 			textWidth.setColumns(10);
 		}
 		{
-			JLabel lblHeight = new JLabel("Height");
+			JLabel lblHeight = new JLabel("Height : \r\n");
+			lblHeight.setForeground(new Color(47, 79, 79));
+			lblHeight.setFont(new Font("Arial", Font.BOLD, 12));
 			GridBagConstraints gbc_lblHeight = new GridBagConstraints();
+			gbc_lblHeight.anchor = GridBagConstraints.EAST;
 			gbc_lblHeight.insets = new Insets(0, 0, 5, 5);
 			gbc_lblHeight.gridx = 2;
 			gbc_lblHeight.gridy = 4;
@@ -131,6 +167,13 @@ public class RectangleDialogSort extends JDialog {
 		}
 		{
 			textHeight = new JTextField();
+			textHeight.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textHeight.getText().length() >= 4 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textHeight = new GridBagConstraints();
 			gbc_textHeight.anchor = GridBagConstraints.WEST;
 			gbc_textHeight.insets = new Insets(0, 0, 5, 0);
@@ -143,10 +186,13 @@ public class RectangleDialogSort extends JDialog {
 		
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBackground(new Color(240, 255, 255));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				okButton = new JButton("OK");
+				okButton.setBackground(new Color(47, 79, 79));
+				okButton.setForeground(new Color(240, 255, 255));
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						try {
@@ -186,6 +232,8 @@ public class RectangleDialogSort extends JDialog {
 			}
 			{
 				cancelButton = new JButton("Cancel");
+				cancelButton.setForeground(new Color(240, 255, 255));
+				cancelButton.setBackground(new Color(47, 79, 79));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						success = false;

@@ -7,7 +7,6 @@ public class Circle extends SurfaceShape {
 	
 	private Point center;
 	private int radius;
-	//protected boolean shape;
 	
 	
 	public Circle() {
@@ -96,6 +95,7 @@ public class Circle extends SurfaceShape {
 			g.drawRect(this.getCenter().getX() - 3, this.getCenter().getY() - this.radius - 3, 6, 6);
 		}
 	}
+	
 
 	@Override
 	public void fill(Graphics g) {

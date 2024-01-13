@@ -4,11 +4,12 @@ import java.awt.EventQueue;
 
 
 
+
+
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import javax.swing.JToggleButton;
@@ -23,10 +24,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import geometry.*;
-import drawing.DialogRectangle;
+import java.awt.Font;
 
 public class Frame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JToggleButton tglbtnPoint;
 	private JToggleButton tglbtnLine;
@@ -79,44 +84,53 @@ public class Frame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelButtonsWest = new JPanel();
+		panelButtonsWest.setBackground(new Color(85, 107, 47));
 		contentPane.add(panelButtonsWest, BorderLayout.WEST);
 		panelButtonsWest.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		tglbtnPoint = new JToggleButton("Point");
-		tglbtnPoint.setForeground(new Color(189, 183, 107));
+		tglbtnPoint.setFont(new Font("Century Gothic", Font.BOLD, 12));
+		tglbtnPoint.setForeground(new Color(250, 250, 210));
 		tglbtnPoint.setBackground(new Color(85, 107, 47));
 		panelButtonsWest.add(tglbtnPoint);
 		
 		tglbtnLine = new JToggleButton("Line");
-		tglbtnLine.setForeground(new Color(189, 183, 107));
+		tglbtnLine.setFont(new Font("Century Gothic", Font.BOLD, 12));
+		tglbtnLine.setForeground(new Color(250, 250, 210));
 		tglbtnLine.setBackground(new Color(85, 107, 47));
 		panelButtonsWest.add(tglbtnLine);
 		
 		tglbtnRectangle = new JToggleButton("Rectangle");
-		tglbtnRectangle.setForeground(new Color(189, 183, 107));
+		tglbtnRectangle.setFont(new Font("Century Gothic", Font.BOLD, 12));
+		tglbtnRectangle.setForeground(new Color(250, 250, 210));
 		tglbtnRectangle.setBackground(new Color(85, 107, 47));
 		panelButtonsWest.add(tglbtnRectangle);
 		
 		tglbtnCircle = new JToggleButton("Circle");
+		tglbtnCircle.setFont(new Font("Century Gothic", Font.BOLD, 12));
 		tglbtnCircle.setBackground(new Color(85, 107, 47));
-		tglbtnCircle.setForeground(new Color(189, 183, 107));
+		tglbtnCircle.setForeground(new Color(250, 250, 210));
 		panelButtonsWest.add(tglbtnCircle);
 		
 		tglbtnDonut = new JToggleButton("Donut");
+		tglbtnDonut.setFont(new Font("Century Gothic", Font.BOLD, 12));
 		tglbtnDonut.setBackground(new Color(85, 107, 47));
-		tglbtnDonut.setForeground(new Color(189, 183, 107));
+		tglbtnDonut.setForeground(new Color(250, 250, 210));
 		panelButtonsWest.add(tglbtnDonut);
 		
 		panelButtonsEast = new JPanel();
+		panelButtonsEast.setBackground(new Color(85, 107, 47));
 		contentPane.add(panelButtonsEast, BorderLayout.EAST);
 		panelButtonsEast.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		tglbtnSelect = new JToggleButton("Select");
+		tglbtnSelect.setFont(new Font("Century Gothic", Font.BOLD, 12));
 		tglbtnSelect.setBackground(new Color(85, 107, 47));
-		tglbtnSelect.setForeground(new Color(189, 183, 107));
+		tglbtnSelect.setForeground(new Color(250, 250, 210));
 		panelButtonsEast.add(tglbtnSelect);
 		
 		btnModify = new JButton("Modify");
+		btnModify.setFont(new Font("Century Gothic", Font.BOLD, 12));
 		btnModify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(selectedShape == null ) {
@@ -134,7 +148,6 @@ public class Frame extends JFrame {
 							int x = Integer.parseInt(dlgPoint.getTextX().getText());
 							int y = Integer.parseInt(dlgPoint.getTextY().getText());
 							Point modifyPoint = new Point(x,y,true,dlgPoint.getBtnOuterColor().getBackground());
-							System.out.println("modifikacija" + point);
 							point.setX(modifyPoint.getX());
 							point.setY(modifyPoint.getY());
 							point.setOuterColor(modifyPoint.getOuterColor());
@@ -144,7 +157,6 @@ public class Frame extends JFrame {
 					else if(selectedShape instanceof Line) {
 						DialogLine dlgLine = new DialogLine();
 						Line line = (Line)selectedShape;
-						
 						dlgLine.getTextXStartPoint().setText(line.getStartPoint().getX() + "");
 						dlgLine.getTextYStartPoint().setText(line.getStartPoint().getY() + "");
 						dlgLine.getTextXEndPoint().setText(line.getEndPoint().getX() + "");
@@ -158,7 +170,6 @@ public class Frame extends JFrame {
 							int yEndPoint = Integer.parseInt(dlgLine.getTextYEndPoint().getText());
 							Line modifyLine = new Line(new Point(xStartPoint,yStartPoint), new Point(xEndPoint,yEndPoint), true , 
 									dlgLine.getBtnOuterColor().getBackground());
-							System.out.println("modifikacija" + line);
 							line.setStartPoint(modifyLine.getStartPoint());
 							line.setEndPoint(modifyLine.getEndPoint());
 							line.setOuterColor(modifyLine.getOuterColor());
@@ -210,6 +221,7 @@ public class Frame extends JFrame {
 							Donut modifyDonut = new Donut(new Point(x,y),outerRadius,innerRadius,true, dlgDonut.getBtnOuterColor().getBackground(),
 									dlgDonut.getBtnInnerColor().getBackground());
 							donut.setCenter(modifyDonut.getCenter());
+							donut.setRadius(modifyDonut.getRadius());
 							donut.setInnerRadius(modifyDonut.getInnerRadius());
 							donut.setOuterColor(modifyDonut.getOuterColor());
 							donut.setInnerColor(modifyDonut.getInnerColor());
@@ -220,7 +232,6 @@ public class Frame extends JFrame {
 					else if(selectedShape instanceof Circle) {
 						DialogCircle dlgCircle = new DialogCircle();
 						Circle circle = (Circle)selectedShape;
-						
 						dlgCircle.getTextXCenter().setText(circle.getCenter().getX() + "");
 						dlgCircle.getTextYCenter().setText(circle.getCenter().getY() + "");
 						dlgCircle.getTextRadius().setText(circle.getRadius() + "");
@@ -234,6 +245,7 @@ public class Frame extends JFrame {
 							Circle modifyCircle = new Circle(new Point(x,y),radius,true,dlgCircle.getBtnOuterColor().getBackground(),
 									dlgCircle.getBtnInnerColor().getBackground());
 							circle.setCenter(modifyCircle.getCenter());
+							circle.setRadius(modifyCircle.getRadius());
 							circle.setOuterColor(modifyCircle.getOuterColor());
 							circle.setInnerColor(modifyCircle.getInnerColor());
 							repaint();
@@ -248,6 +260,7 @@ public class Frame extends JFrame {
 		panelButtonsEast.add(btnModify);
 		
 		btnDelete = new JButton("Delete");
+		btnDelete.setFont(new Font("Century Gothic", Font.BOLD, 12));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(selectedShape == null) {
@@ -283,11 +296,12 @@ public class Frame extends JFrame {
 		contentPane.add(panelNorth, BorderLayout.NORTH);
 		
 		btnOuterColor = new JButton("Outer color");
-		btnOuterColor.setForeground(new Color(245, 245, 245));
-		btnOuterColor.setBackground(outerColor);
+		btnOuterColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
+		btnOuterColor.setForeground(new Color(250, 250, 210));
+		btnOuterColor.setBackground(new Color(0, 0, 0));
 		btnOuterColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				outerColor = JColorChooser.showDialog(btnOuterColor, "Choose your outer color", outerColor);
+				outerColor = JColorChooser.showDialog(btnOuterColor, "Choose your outer color", btnOuterColor.getBackground());
 				if (outerColor != null) {
 					btnOuterColor.setBackground(outerColor);
 				}
@@ -296,11 +310,12 @@ public class Frame extends JFrame {
 		panelNorth.add(btnOuterColor);
 		
 		btnInnerColor = new JButton("Inner color");
+		btnInnerColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
 		btnInnerColor.setForeground(new Color(85, 107, 47));
 		btnInnerColor.setBackground(innerColor);
 		btnInnerColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				innerColor = JColorChooser.showDialog(btnInnerColor, "Choose your inner color", innerColor);
+				innerColor = JColorChooser.showDialog(btnInnerColor, "Choose your inner color", btnInnerColor.getBackground());
 				if (innerColor != null) {
 					btnInnerColor.setBackground(innerColor);
 				}
@@ -405,7 +420,6 @@ public class Frame extends JFrame {
 					for (Shape shape : pnlDrawing.getShapes()) {
 						if(shape.contains(x, y) ) {
 							selectedShape = shape;
-							System.out.println(selectedShape);
 						}
 					}
 					for(Shape shape : pnlDrawing.getShapes()) {

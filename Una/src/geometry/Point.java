@@ -3,8 +3,9 @@ package geometry;
 import java.awt.Color;
 
 
+
 import java.awt.Graphics;
-//import java.util.Objects;
+
 
 public class Point  extends Shape{
 	

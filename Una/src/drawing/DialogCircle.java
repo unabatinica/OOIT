@@ -18,9 +18,16 @@ import java.awt.Insets;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.Font;
 
 public class DialogCircle extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textXCenter;
 	private JTextField textRadius;
@@ -41,10 +48,12 @@ public class DialogCircle extends JDialog {
 
 
 	public DialogCircle() {
+		getContentPane().setBackground(new Color(250, 250, 210));
 		setTitle("Dialog Circle");
 		setModal(true);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(250, 250, 210));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();
@@ -55,6 +64,9 @@ public class DialogCircle extends JDialog {
 		contentPanel.setLayout(gbl_contentPanel);
 		{
 			JLabel lblXCenter = new JLabel("Center X :");
+			lblXCenter.setForeground(new Color(85, 107, 47));
+			lblXCenter.setFont(new Font("Century Gothic", Font.BOLD, 12));
+			lblXCenter.setBackground(new Color(255, 255, 255));
 			GridBagConstraints gbc_lblXCenter = new GridBagConstraints();
 			gbc_lblXCenter.anchor = GridBagConstraints.EAST;
 			gbc_lblXCenter.insets = new Insets(0, 0, 5, 5);
@@ -64,6 +76,13 @@ public class DialogCircle extends JDialog {
 		}
 		{
 			textXCenter = new JTextField();
+			textXCenter.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textXCenter.getText().length() >= 4 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textXCenter = new GridBagConstraints();
 			gbc_textXCenter.anchor = GridBagConstraints.WEST;
 			gbc_textXCenter.insets = new Insets(0, 0, 5, 0);
@@ -74,6 +93,8 @@ public class DialogCircle extends JDialog {
 		}
 		{
 			JLabel lblYCenter = new JLabel("Center Y :");
+			lblYCenter.setForeground(new Color(85, 107, 47));
+			lblYCenter.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			GridBagConstraints gbc_lblYCenter = new GridBagConstraints();
 			gbc_lblYCenter.anchor = GridBagConstraints.EAST;
 			gbc_lblYCenter.insets = new Insets(0, 0, 5, 5);
@@ -83,6 +104,13 @@ public class DialogCircle extends JDialog {
 		}
 		{
 			textYCenter = new JTextField();
+			textYCenter.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textYCenter.getText().length() >= 3 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textYCenter = new GridBagConstraints();
 			gbc_textYCenter.anchor = GridBagConstraints.WEST;
 			gbc_textYCenter.insets = new Insets(0, 0, 5, 0);
@@ -93,6 +121,8 @@ public class DialogCircle extends JDialog {
 		}
 		{
 			JLabel lblRadius = new JLabel("Radius :");
+			lblRadius.setForeground(new Color(85, 107, 47));
+			lblRadius.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			GridBagConstraints gbc_lblRadius = new GridBagConstraints();
 			gbc_lblRadius.anchor = GridBagConstraints.EAST;
 			gbc_lblRadius.insets = new Insets(0, 0, 5, 5);
@@ -102,6 +132,13 @@ public class DialogCircle extends JDialog {
 		}
 		{
 			textRadius = new JTextField();
+			textRadius.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+					if (textRadius.getText().length() >= 3 ) 
+			            e.consume();
+				}
+			});
 			GridBagConstraints gbc_textRadius = new GridBagConstraints();
 			gbc_textRadius.anchor = GridBagConstraints.WEST;
 			gbc_textRadius.insets = new Insets(0, 0, 5, 0);
@@ -111,7 +148,9 @@ public class DialogCircle extends JDialog {
 			textRadius.setColumns(10);
 		}
 		{
-			JLabel lblOuterColor = new JLabel("Outer color");
+			JLabel lblOuterColor = new JLabel("Line color");
+			lblOuterColor.setForeground(new Color(85, 107, 47));
+			lblOuterColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			GridBagConstraints gbc_lblOuterColor = new GridBagConstraints();
 			gbc_lblOuterColor.insets = new Insets(0, 0, 5, 5);
 			gbc_lblOuterColor.gridx = 2;
@@ -119,10 +158,11 @@ public class DialogCircle extends JDialog {
 			contentPanel.add(lblOuterColor, gbc_lblOuterColor);
 		}
 		{
-		    btnOuterColor = new JButton("Outer color");
+		    btnOuterColor = new JButton("Line color");
+		    btnOuterColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			btnOuterColor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Color outerColor = JColorChooser.showDialog(btnOuterColor, "Choose your outer color", btnOuterColor.getBackground());
+					Color outerColor = JColorChooser.showDialog(btnOuterColor, "Choose your line color", btnOuterColor.getBackground());
 					if (outerColor != null) {
 						btnOuterColor.setBackground(outerColor);
 					}
@@ -138,6 +178,8 @@ public class DialogCircle extends JDialog {
 		}
 		{
 			JLabel lblInnerColor = new JLabel("Inner color");
+			lblInnerColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
+			lblInnerColor.setForeground(new Color(85, 107, 47));
 			GridBagConstraints gbc_lblInnerColor = new GridBagConstraints();
 			gbc_lblInnerColor.insets = new Insets(0, 0, 0, 5);
 			gbc_lblInnerColor.gridx = 2;
@@ -146,6 +188,7 @@ public class DialogCircle extends JDialog {
 		}
 		{
 			btnInnerColor = new JButton("Inner color");
+			btnInnerColor.setFont(new Font("Century Gothic", Font.BOLD, 12));
 			btnInnerColor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Color innerColor = JColorChooser.showDialog(btnInnerColor, "Choose your inner color", btnInnerColor.getBackground());
@@ -163,10 +206,14 @@ public class DialogCircle extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBackground(new Color(85, 107, 47));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.setForeground(new Color(85, 107, 47));
+				okButton.setBackground(new Color(250, 250, 210));
+				okButton.setFont(new Font("Century Gothic", Font.BOLD, 12));
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						try {
@@ -175,22 +222,22 @@ public class DialogCircle extends JDialog {
 								JOptionPane.showMessageDialog(okButton, "Please insert all fields");
 							}
 							else if(Integer.parseInt(textXCenter.getText()) < 0 ||
-									Integer.parseInt(textXCenter.getText()) > 810) {
+									Integer.parseInt(textXCenter.getText()) > 1360) {
 								
-								JOptionPane.showMessageDialog(okButton, "Please insert a value of the x-coordinate of the center greater than 0 and less than 810");
+								JOptionPane.showMessageDialog(okButton, "Please insert a value of the x-coordinate of the center 0 or greater than 0 and less than 1360");
 							}
 							else if(
 									Integer.parseInt(textYCenter.getText()) < 0 ||
-									Integer.parseInt(textYCenter.getText()) > 650){
+									Integer.parseInt(textYCenter.getText()) > 755){
 								
-								JOptionPane.showMessageDialog(okButton, "Please insert a value of the y-coordinate of the center greater than 0 and less than 650");
+								JOptionPane.showMessageDialog(okButton, "Please insert a value of the y-coordinate of the center 0 or greater than 0 and less than 755");
 								
 							}
 							else if(Integer.parseInt(textRadius.getText().toString()) <= 0 ||
-									Integer.parseInt(textRadius.getText().toString()) > 350
+									Integer.parseInt(textRadius.getText().toString()) > 500
 									) {
 								
-								JOptionPane.showMessageDialog(okButton, "Please insert a radius value greater than 0 and less than 350");
+								JOptionPane.showMessageDialog(okButton, "Please insert a radius value greater than 0 and less than 500");
 							}
 							else {
 								succes = true;
@@ -207,6 +254,9 @@ public class DialogCircle extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setBackground(new Color(250, 250, 210));
+				cancelButton.setForeground(new Color(85, 107, 47));
+				cancelButton.setFont(new Font("Century Gothic", Font.BOLD, 12));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 							succes=false;

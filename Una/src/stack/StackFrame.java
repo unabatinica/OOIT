@@ -20,9 +20,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class StackFrame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private DefaultListModel<String> model = new DefaultListModel<String>() ;
 
@@ -57,15 +62,21 @@ public class StackFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelNorth = new JPanel();
+		panelNorth.setBackground(new Color(255, 240, 245));
 		contentPane.add(panelNorth, BorderLayout.NORTH);
 		
 		JLabel lblTitle = new JLabel("Stack");
+		lblTitle.setForeground(new Color(105, 105, 105));
+		lblTitle.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
 		panelNorth.add(lblTitle);
 		
 		JPanel panelSouth = new JPanel();
+		panelSouth.setBackground(new Color(255, 240, 245));
 		contentPane.add(panelSouth, BorderLayout.SOUTH);
 		
 		JButton btnAddRectangle = new JButton("Add rectangle");
+		btnAddRectangle.setForeground(new Color(255, 240, 245));
+		btnAddRectangle.setBackground(new Color(105, 105, 105));
 		btnAddRectangle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RectangleDialog rectangleDialog = new RectangleDialog();
@@ -79,6 +90,8 @@ public class StackFrame extends JFrame {
 		panelSouth.add(btnAddRectangle);
 		
 		JButton btnDeleteRectangle = new JButton("Delete rectangle");
+		btnDeleteRectangle.setForeground(new Color(255, 240, 245));
+		btnDeleteRectangle.setBackground(new Color(105, 105, 105));
 		btnDeleteRectangle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(model.size());
@@ -113,6 +126,7 @@ public class StackFrame extends JFrame {
 		panelSouth.add(btnDeleteRectangle);
 		
 		JPanel panelCenter = new JPanel();
+		panelCenter.setBackground(new Color(255, 240, 245));
 		contentPane.add(panelCenter, BorderLayout.CENTER);
 		
 		JScrollPane scrollPane = new JScrollPane(); 

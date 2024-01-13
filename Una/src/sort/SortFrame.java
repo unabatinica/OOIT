@@ -2,12 +2,12 @@ package sort;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import geometry.Rectangle;
-import stack.RectangleDialog;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -20,14 +20,18 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import java.awt.Font;
 
 public class SortFrame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private DefaultListModel<Rectangle> model = new DefaultListModel<Rectangle>();
 	private ArrayList<Rectangle> sortList = new ArrayList<Rectangle>();
@@ -62,10 +66,13 @@ public class SortFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelSouth = new JPanel();
-		panelSouth.setBackground(new Color(255, 182, 193));
+		panelSouth.setBackground(new Color(240, 255, 255));
 		contentPane.add(panelSouth, BorderLayout.SOUTH);
 		
 		JButton btnAddRectangle = new JButton("Add rectangle");
+		btnAddRectangle.setForeground(new Color(240, 255, 255));
+		btnAddRectangle.setBackground(new Color(47, 79, 79));
+		btnAddRectangle.setFont(new Font("Arial", Font.BOLD, 12));
 		btnAddRectangle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RectangleDialogSort rectangleDialogSort = new RectangleDialogSort();
@@ -80,6 +87,9 @@ public class SortFrame extends JFrame {
 		panelSouth.add(btnAddRectangle);
 		
 		JButton btnSortRectangle = new JButton("Sort rectangle");
+		btnSortRectangle.setForeground(new Color(240, 255, 255));
+		btnSortRectangle.setBackground(new Color(47, 79, 79));
+		btnSortRectangle.setFont(new Font("Arial", Font.BOLD, 12));
 		btnSortRectangle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(model.size() == 0) {
@@ -106,6 +116,7 @@ public class SortFrame extends JFrame {
 		panelSouth.add(btnSortRectangle);
 		
 		JPanel panelCenter = new JPanel();
+		panelCenter.setBackground(new Color(240, 255, 255));
 		contentPane.add(panelCenter, BorderLayout.CENTER);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -117,9 +128,12 @@ public class SortFrame extends JFrame {
 		scrollPane.setViewportView(list);
 		
 		JPanel panelNorth = new JPanel();
+		panelNorth.setBackground(new Color(240, 255, 255));
 		contentPane.add(panelNorth, BorderLayout.NORTH);
 		
 		JLabel lblSort = new JLabel("Sort");
+		lblSort.setForeground(new Color(47, 79, 79));
+		lblSort.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		lblSort.setHorizontalAlignment(SwingConstants.LEFT);
 		panelNorth.add(lblSort);
 	}
