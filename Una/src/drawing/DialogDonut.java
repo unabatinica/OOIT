@@ -248,13 +248,13 @@ public class DialogDonut extends JDialog {
 							else if(Integer.parseInt(textXCenter.getText()) < 0 ||	
 									Integer.parseInt(textXCenter.getText()) > 1360) {
 								
-								JOptionPane.showMessageDialog(okButton, "Please insert a value of the x-coordinate of the center 0 or greater than 0 and less than 810");
+								JOptionPane.showMessageDialog(okButton, "Please insert a value of the x-coordinate of the center 0 or greater than 0 and less than 1360");
 							}
 							else if(
 									Integer.parseInt(textYCenter.getText()) < 0 ||
 									Integer.parseInt(textYCenter.getText()) > 755) {
 								
-								JOptionPane.showMessageDialog(okButton, "Please insert a value of the y-coordinate of the center 0 or greater than 0 and less than 650");
+								JOptionPane.showMessageDialog(okButton, "Please insert a value of the y-coordinate of the center 0 or greater than 0 and less than 755");
 							}
 							else if(Integer.parseInt(textOuterRadius.getText()) < Integer.parseInt(textInnerRadius.getText()) + 10) {
 								JOptionPane.showMessageDialog(okButton, "Outter radius must be greater than inner radius for 10");
